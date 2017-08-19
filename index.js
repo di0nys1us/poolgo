@@ -2,16 +2,24 @@
 
 import React from "react";
 import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { combineReducers, createStore } from "redux";
+import SessionList from "./containers/session-list.js";
 
-const Test = (props) => {
-    return <div>
-        <h1>
-            {props.message}
-        </h1>
-    </div>
-};
+const defaultReducer = (state = 0, action) => state;
+
+const rootReducer = combineReducers({
+    defaultReducer
+});
+
+const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 render(
-    <Test message="Hello, world!" />,
+    <Provider store={store}>
+        <SessionList />
+    </Provider>,
     document.getElementById('root')
 );

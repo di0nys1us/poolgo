@@ -22,5 +22,13 @@ export default {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './index.ejs')
         })
-    ]
+    ],
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                secure: false
+            }
+        }
+    }
 };
