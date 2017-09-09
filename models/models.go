@@ -2,19 +2,7 @@ package models
 
 import (
 	"time"
-
-	"github.com/gorilla/mux"
-	"github.com/jmoiron/sqlx"
 )
-
-type Application struct {
-	router     *mux.Router
-	repository *Repository
-}
-
-type Repository struct {
-	database *sqlx.DB
-}
 
 type Model struct {
 	ID      int               `json:"id" db:"id"`
@@ -49,22 +37,4 @@ type SessionSet struct {
 	AverageStrokes  int           `json:"averageStrokes" db:"average_strokes"`
 	Speed           int           `json:"speed" db:"speed"`
 	EfficiencyIndex int           `json:"efficiencyIndex" db:"efficiency_index"`
-}
-
-type User struct {
-	Model
-	FirstName          string `json:"firstName" db:"first_name"`
-	LastName           string `json:"lastName" db:"last_name"`
-	Email              string `json:"email" db:"email"`
-	HashedPassword     string `json:"-" db:"hashed_password"`
-	AccountExpired     bool   `json:"accountExpired" db:"account_expired"`
-	AccountLocked      bool   `json:"accountLocked" db:"account_locked"`
-	CredentialsExpired bool   `json:"credentialsExpired" db:"credentials_expired"`
-	Enabled            bool   `json:"enabled" db:"enabled"`
-}
-
-type Role struct {
-	Model
-	ID   int
-	Name string
 }

@@ -1,7 +1,10 @@
 package repository
 
-import "github.com/di0nys1us/poolgo/models"
+import "github.com/jmoiron/sqlx"
 
 type Repository interface {
-	FindUser(id int) *models.User
+}
+
+type DatabaseRepository struct {
+	database *sqlx.DB
 }

@@ -1,25 +1,25 @@
 'use strict';
 
-import React from "react";
+import * as React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
-import SessionList from "./containers/session-list.js";
+import ApplicationContainer from "./containers/application"
+import "./style/style"
 
-const defaultReducer = (state = 0, action) => state;
+const defaultReducer = (state = 0, action: any) => state;
 
 const rootReducer = combineReducers({
     defaultReducer
 });
 
 const store = createStore(
-    rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    rootReducer
 );
 
 render(
     <Provider store={store}>
-        <SessionList />
+        <ApplicationContainer />
     </Provider>,
     document.getElementById('root')
 );

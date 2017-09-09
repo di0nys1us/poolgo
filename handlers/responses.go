@@ -35,6 +35,10 @@ func responseNotFound(w http.ResponseWriter) {
 	writeJSON(w, http.StatusNotFound, &errorMessage{http.StatusText(http.StatusNotFound)})
 }
 
+func responseUnauthorized(w http.ResponseWriter) {
+	writeJSON(w, http.StatusUnauthorized, &errorMessage{http.StatusText(http.StatusUnauthorized)})
+}
+
 func responseInternalServerError(w http.ResponseWriter, err error) {
 	writeJSON(w, http.StatusInternalServerError, &errorMessage{err.Error()})
 }
